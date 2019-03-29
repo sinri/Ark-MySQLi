@@ -88,4 +88,29 @@ class ArkMySQLi
         }
         $this->instanceOfMySQLi = null;
     }
+
+    /**
+     * @since 1.1
+     * @return ArkMySQLiFeedback
+     */
+    public function getLastFeedback()
+    {
+        $feedback = new ArkMySQLiFeedback();
+        $feedback->info = $this->instanceOfMySQLi->info;
+        $feedback->affected_rows = $this->instanceOfMySQLi->affected_rows;
+        $feedback->insert_id = $this->instanceOfMySQLi->insert_id;
+        $feedback->errno = $this->instanceOfMySQLi->errno;
+        $feedback->error = $this->instanceOfMySQLi->error;
+        $feedback->warning_count = $this->instanceOfMySQLi->warning_count;
+        $feedback->warnings = [];
+
+        if ($feedback->warning_count > 0) {
+            $w = $this->instanceOfMySQLi->get_warnings();
+            do {
+                $feedback->warnings[] = $w;
+            } while ($w->next());
+        }
+
+        return $feedback;
+    }
 }
