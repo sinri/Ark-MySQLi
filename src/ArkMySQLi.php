@@ -90,7 +90,7 @@ class ArkMySQLi
     }
 
     /**
-     * @since 1.1
+     * @since 1.2
      * @return ArkMySQLiFeedback
      */
     public function getLastFeedback()

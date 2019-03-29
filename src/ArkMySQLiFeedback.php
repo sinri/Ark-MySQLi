@@ -11,7 +11,7 @@ namespace sinri\ark\database\mysqli;
 /**
  * Class ArkMySQLiFeedback
  * @package sinri\ark\database\mysqli
- * @since 1.1
+ * @since 1.2
  */
 class ArkMySQLiFeedback
 {
